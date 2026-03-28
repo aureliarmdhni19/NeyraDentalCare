@@ -7,7 +7,7 @@ $db_connected = false;
 
 try {
     $host = 'sql300.infinityfree.com';
-$user = '	if0_41501234';
+$user = 'if0_41501234';
 $pass = 'adithandsome123';
 $dbname = 'if0_41501234_klinik';
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
