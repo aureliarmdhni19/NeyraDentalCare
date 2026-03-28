@@ -1,6 +1,6 @@
 <?php
-$host = 'sql300.infinityfree.com';
-$user = '	if0_41501234';
+$host = 'sql105.infinityfree.com';
+$user = 'if0_41501234';
 $pass = 'adithandsome123';
 $dbname = 'if0_41501234_klinik';
 
