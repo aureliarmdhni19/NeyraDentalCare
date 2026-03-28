@@ -309,6 +309,13 @@ endforeach; ?>
 
     <!-- Footer -->
     <footer>
+        <div class="footer-nav">
+            <a href="#beranda">Beranda</a>
+            <a href="#tentang">Tentang</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#galeri">Galeri</a>
+            <a href="#tim">Tim Kami</a>
+        </div>
         <p>&copy; <?php echo date("Y"); ?> Neyra Dental Care. Dibuat dengan cinta oleh Mahasiswa Terapi Gigi UNHAS.</p>
     </footer>
 

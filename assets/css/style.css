@@ -459,10 +459,42 @@ textarea.form-control {
 /* Footer */
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem 2rem;
     margin-top: 5rem;
     background: var(--glass-bg);
     border-top: 1px solid var(--glass-border);
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    color: var(--clr-text-main);
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.footer-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    bottom: -4px; left: 0;
+    background: var(--clr-accent);
+    transition: width var(--transition-speed);
+}
+
+.footer-nav a:hover::after {
+    width: 100%;
+}
+
+.footer-nav a:hover {
+    color: var(--clr-accent-hover);
 }
 
 /* Responsive */
