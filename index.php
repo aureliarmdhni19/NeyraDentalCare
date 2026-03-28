@@ -8,18 +8,19 @@ $db_connected = false;
 try {
     $host = 'localhost';
     $user = 'root';
-    $pass = '';     
+    $pass = '';
     $dbname = 'klinik_gigi';
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db_connected = true;
-    
+
     // Fetch Services
     $stmt = $pdo->query("SELECT id, nama_layanan FROM layanan ORDER BY id ASC");
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    // DB tidak terkoneksi, tidak masalah, kita biarkan kosong.
-    // Nanti user akan membaca instruksi dari markdown.
+}
+catch (PDOException $e) {
+// DB tidak terkoneksi, tidak masalah, kita biarkan kosong.
+// Nanti user akan membaca instruksi dari markdown.
 }
 ?>
 <!DOCTYPE html>
@@ -27,9 +28,9 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Dental Clinic | By Mahasiswa Terapi Gigi UNHAS</title>
-    <meta name="description" content="Klinik gigi aesthetic dan modern. Dikelola oleh mahasiswa Terapi Gigi Universitas Hasanuddin (UNHAS). Layanan profesional, tempat nyaman.">
-    <meta name="keywords" content="klinik gigi, dokter gigi makassar, terapi gigi unhas, scaling gigi, tambal gigi, klinik gigi aesthetic">
+    <title>Neyra Dental Care | By Mahasiswa Terapi Gigi UNHAS</title>
+    <meta name="description" content="Klinik gigi Neyra Dental Care yang modern. Dikelola oleh mahasiswa Terapi Gigi Universitas Hasanuddin (UNHAS). Layanan profesional, tempat nyaman.">
+    <meta name="keywords" content="klinik gigi, dokter gigi makassar, terapi gigi unhas, scaling gigi, tambal gigi, neyra dental care">
     
     <!-- Google Fonts: Outfit (Modern Geometric Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,8 +40,11 @@ try {
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
 
@@ -55,7 +59,7 @@ try {
     <header>
         <nav class="navbar glass-panel">
             <div class="nav-logo">
-                <h2>AestheticDental.</h2>
+                <img src="assets/images/logoneyra.png" alt="Neyra Dental Care" style="width: 100px; height: auto;">
             </div>
             <ul class="nav-links">
                 <li><a href="#beranda">Beranda</a></li>
@@ -103,22 +107,22 @@ try {
         <h2 class="section-title">Layanan Kami</h2>
         <div class="layanan-grid">
             <div class="layanan-card glass-panel">
-                <div class="layanan-icon">🦷</div>
+                <div class="layanan-icon"><i class="fa-solid fa-stethoscope"></i></div>
                 <h3>Pemeriksaan Rutin</h3>
                 <p>Cegah masalah sejak dini dengan pemeriksaan rutin yang mendetail menggunakan teknologi terkini.</p>
             </div>
             <div class="layanan-card glass-panel">
-                <div class="layanan-icon">✨</div>
+                <div class="layanan-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                 <h3>Scaling (Pembersihan)</h3>
                 <p>Menghilangkan plak dan karang gigi membandel tanpa rasa sakit berlebih.</p>
             </div>
             <div class="layanan-card glass-panel">
-                <div class="layanan-icon">💎</div>
+                <div class="layanan-icon"><i class="fa-solid fa-gem"></i></div>
                 <h3>Tambal Estetik</h3>
                 <p>Penambalan dengan material sewarna gigi untuk hasil yang natural dan kuat.</p>
             </div>
             <div class="layanan-card glass-panel">
-                <div class="layanan-icon">🛡️</div>
+                <div class="layanan-icon"><i class="fa-solid fa-tooth"></i></div>
                 <h3>Pencabutan Ekstraksi</h3>
                 <p>Prosedur ekstraksi aman dan minim trauma untuk gigi yang tidak bisa dipertahankan.</p>
             </div>
@@ -145,6 +149,9 @@ try {
                 </div>
             </div>
             <div class="swiper-pagination"></div>
+            <!-- Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
@@ -171,22 +178,47 @@ try {
             <!-- Tim Dokter / Terapis -->
             <div class="tim glass-panel">
                 <div style="flex: 1 1 100%; margin-bottom: 1rem;">
-                    <h3>Tim Terapis Ahli Kami 👩‍⚕️</h3>
-                    <p style="font-size: 0.9rem;">Mahasiswa / Alumni Terapi Gigi Terbaik UNHAS</p>
+                    <h3>Tim Terapis Ahli Kami</h3>
+                    <p style="font-size: 0.9rem;">Mahasiswa Terapi Gigi Terbaik UNHAS</p>
                 </div>
                 <div class="tim-card glass-panel">
-                    <img class="tim-img" src="https://images.unsplash.com/photo-1594824432258-f7526685122b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Anggota Tim 1">
-                    <h4>Drg. Aisyah</h4>
+                    <img class="tim-img" src="assets/images/juan.jpeg" alt="Juan Ibnu Alrafi">
+                    <h4>Juan Ibnu Alrafi</h4>
                     <span style="font-size:0.8rem; color:var(--clr-text-light);">Supervisor Medis</span>
                 </div>
                 <div class="tim-card glass-panel">
-                    <img class="tim-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Anggota Tim 2">
-                    <h4>Rahmat H.</h4>
+                    <img class="tim-img" src="assets/images/aurel.jpeg" alt="Aurelia Ramadhani">
+                    <h4>Aurelia Ramdhani</h4>
                     <span style="font-size:0.8rem; color:var(--clr-text-light);">Lead Terapis (UNHAS)</span>
                 </div>
                 <div class="tim-card glass-panel">
-                    <img class="tim-img" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Anggota Tim 3">
-                    <h4>Siti Naila</h4>
+                    <img class="tim-img" src="assets/images/aisyah.jpeg" alt="Aisyah Putri Zardhani">
+                    <h4>Aisyah Putri Zardhani</h4>
+                    <span style="font-size:0.8rem; color:var(--clr-text-light);">Asisten Dental</span>
+                </div>
+                <div class="tim-card glass-panel">
+                    <img class="tim-img" src="assets/images/chelsea.jpeg" alt="Chelsea Olivia">
+                    <h4>Chelsea Olivia</h4>
+                    <span style="font-size:0.8rem; color:var(--clr-text-light);">Asisten Dental</span>
+                </div>
+                <div class="tim-card glass-panel">
+                    <img class="tim-img" src="assets/images/dea.jpeg" alt="Dea Kalsum Z.">
+                    <h4>Dea Kalsum Z.</h4>
+                    <span style="font-size:0.8rem; color:var(--clr-text-light);">Asisten Dental</span>
+                </div>
+                <div class="tim-card glass-panel">
+                    <img class="tim-img" src="assets/images/fida.jpeg" alt="Mufidah Katrina Musfahuddin">
+                    <h4>Mufidah Katrina Musfahuddin</h4>
+                    <span style="font-size:0.8rem; color:var(--clr-text-light);">Asisten Dental</span>
+                </div>
+                <div class="tim-card glass-panel">
+                    <img class="tim-img" src="assets/images/pute.jpeg" alt="Putri Anastasya">
+                    <h4>Putri Anastasya</h4>
+                    <span style="font-size:0.8rem; color:var(--clr-text-light);">Asisten Dental</span>
+                </div>
+                <div class="tim-card glass-panel">
+                    <img class="tim-img" src="assets/images/vera.png" alt="Verawati">
+                    <h4>Verawati</h4>
                     <span style="font-size:0.8rem; color:var(--clr-text-light);">Asisten Dental</span>
                 </div>
             </div>
@@ -207,11 +239,14 @@ try {
                     <div class="alert alert-<?php echo $_SESSION['status_type']; ?>">
                         <?php echo $_SESSION['status_message']; ?>
                     </div>
-                <?php unset($_SESSION['status_message']); unset($_SESSION['status_type']); endif; ?>
+                <?php unset($_SESSION['status_message']);
+    unset($_SESSION['status_type']);
+endif; ?>
 
                 <?php if (!$db_connected): ?>
                     <div class="alert alert-error">Database belum dikonfigurasi. Form dimatikan sementara. Jalankan instruksi di file Panduan.</div>
-                <?php endif; ?>
+                <?php
+endif; ?>
 
                 <form action="process_reservation.php" method="POST">
                     <div class="form-group">
@@ -228,7 +263,8 @@ try {
                             <option value="">-- Pilih Layanan (Opsional) --</option>
                             <?php foreach ($services as $srv): ?>
                                 <option value="<?php echo $srv['id']; ?>"><?php echo htmlspecialchars($srv['nama_layanan']); ?></option>
-                            <?php endforeach; ?>
+                            <?php
+endforeach; ?>
                         </select>
                     </div>
                     
@@ -255,15 +291,25 @@ try {
 
             <!-- Gmaps -->
             <div class="map-container">
-                <!-- Frame lokasi Universitas Hasanuddin sebagai dummy lokasi klinik -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x2dbee2b0bba623f1%3A0xc3bbae292cce16eb!2sUniversitas%20Hasanuddin!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- Frame lokasi RSGM UNHAS (Rumah Sakit Gigi dan Mulut Universitas Hasanuddin) -->
+                <iframe src="https://maps.google.com/maps?q=RSGM%20Universitas%20Hasanuddin&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 
+    <!-- Floating Social Buttons -->
+    <div class="floating-socials">
+        <a href="https://wa.me/6281242754349?text=Halo%20Admin%20Neyra%20Dental%20Care,%20saya%20ingin%20berkonsultasi%20mengenai%20perawatan%20gigi%20saya.%0A%0ANama:%20%0AUsia:%20%0AKeluhan:%20" target="_blank" class="float-btn wa-btn" title="Chat WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/aaureliee___" target="_blank" class="float-btn ig-btn" title="Kunjungi Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> AestheticDental. Dibuat dengan cinta oleh Mahasiswa Terapi Gigi UNHAS.</p>
+        <p>&copy; <?php echo date("Y"); ?> Neyra Dental Care. Dibuat dengan cinta oleh Mahasiswa Terapi Gigi UNHAS.</p>
     </footer>
 
     <!-- Swiper JS -->
@@ -272,32 +318,5 @@ try {
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
     
-    <!-- Initialize Swiper in Document -> this is specific for index slider -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            var swiper = new Swiper(".mySwiper", {
-                effect: "coverflow",
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: "auto",
-                coverflowEffect: {
-                    rotate: 30, // less rotation for modern look
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: false, // Turn off dark shadows for bright glass aesthetic
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-                loop: true,
-            });
-        });
-    </script>
 </body>
 </html>
