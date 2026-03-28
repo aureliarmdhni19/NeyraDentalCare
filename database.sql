@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS klinik_gigi;
-USE klinik_gigi;
-
 CREATE TABLE IF NOT EXISTS layanan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nama_layanan VARCHAR(100) NOT NULL,
